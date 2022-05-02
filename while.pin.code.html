@@ -1,0 +1,45 @@
+<script>
+  const PIN = "0009";
+  let pin = "";
+  let tries = 0;
+  // let maxWithdraw = 0;
+  let balance = 1000000.0;
+  let money;
+
+  while (true) {
+    pin = prompt("ENTER PIN: ");
+    tries++;
+    if (pin == PIN) {
+      alert(`ACCES GRANTED!!! \n\n
+      your balance: ${balance} MDL`);
+      money = +prompt("withdraw: ?");
+
+      if (money > 20000) {
+        alert("You cannot withdraw more that 20000");
+        continue;
+      }
+      if (balance <= 50) {
+        alert(`You cannot withdraw this amount, min amount in your acount 50`);
+        break;
+      }
+      if (balance > 50) {
+        if (tries == 3) {
+          alert("max 3 retrageri");
+          break;
+        }
+        balance -= money;
+        alert(`Succes !!! \n You balance is ${balance}`);
+        continue;
+      }
+      balance -= money;
+      alert(`Succes !!! \n You balance is ${balance}`);
+      break;
+    } else {
+      alert("wrong PIN");
+      if (tries == 3) {
+        alert("card BLOCKED");
+        break;
+      }
+    }
+  }
+</script>
